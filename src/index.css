@@ -18,10 +18,3 @@
   font-family: 'Poppins-Bold';
   src: local('Poppins-Bold'), url(./fonts/Poppins-Bold.ttf) format('truetype');
 }
-
-body {
-  font-family: 'Poppins',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
