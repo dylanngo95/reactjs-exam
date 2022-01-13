@@ -7,7 +7,7 @@ class Button extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            result: null,
             error: false
         }
     }
@@ -20,8 +20,8 @@ class Button extends React.Component {
                     console.log(result);
                     this.setState({
                         isLoaded: true,
-                        error:true,
-                        name: result.login
+                        error: false,
+                        result: result
                     });
                 },
                 // Note: it's important to handle errors here
@@ -37,7 +37,7 @@ class Button extends React.Component {
     }
 
     render() {
-        if (!this.state.error) {
+        if (!this.state.isLoaded) {
             return (
                 <button
                     style={{ color: this.context.color }}
@@ -49,10 +49,10 @@ class Button extends React.Component {
         } else {
             return (
                 <button
-                    style={{ color: this.context.theme.color }}
+                    style={{ color: this.context.color }}
                     onClick={this.handleClick}
                 >
-                    Let's Crash Frontend
+                    {this.state.result.login.name.c}
                 </button>
             );
         }
