@@ -1,7 +1,10 @@
 import React from 'react';
 import { Form, Button, Breadcrumb } from 'react-bootstrap';
+import { ThemeContext } from '../../ThemesContext';
 
 class Home extends React.Component {
+
+    static contextType = ThemeContext;
 
     constructor(props) {
         super(props);
@@ -12,6 +15,9 @@ class Home extends React.Component {
     }
 
     render() {
+        const themeName = this.context.name;
+        let title = "Them has changed to " + themeName;
+
         return (
             <div>
                 <Breadcrumb>
@@ -36,7 +42,7 @@ class Home extends React.Component {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check
                             type="checkbox"
-                            label="Check me out"
+                            label={title}
                             onChange={this.changeTheme}
                         />
                     </Form.Group>

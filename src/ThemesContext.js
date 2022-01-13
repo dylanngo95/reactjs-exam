@@ -2,7 +2,7 @@ import React from "react";
 
 export const themes = {
         dark: {
-                foreground: '#04293A',
+                name: 'Dark',
                 background: '#041C32',
                 color: '#ECB365',
                 body: {
@@ -14,7 +14,7 @@ export const themes = {
                 }
         },
         light: {
-                foreground: '#ffffff',
+                name: 'Light',
                 background: '#DDDDDD',
                 color: '#222831',
                 body: {
