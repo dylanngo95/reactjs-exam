@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Button, Breadcrumb } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { ThemeContext } from '../../ThemesContext';
+import BreadcrumbComponent from '../../components/breadcrumb/Breadcrumb';
 
 class Home extends React.Component {
 
@@ -20,13 +21,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <Breadcrumb>
-                    <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-                    <Breadcrumb.Item href="#">
-                        Library
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item active>Data</Breadcrumb.Item>
-                </Breadcrumb>
+                <BreadcrumbComponent />
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
