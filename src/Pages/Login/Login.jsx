@@ -1,26 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { LoginContext } from '../../context/LoginConext';
+import { AuthContext } from '../../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    let { stateLogin, dispatch } = useContext(LoginContext);
-
+    let { auth, dispatch } = useContext(AuthContext);
     let [name, setName] = useState();
     let [password, setPassword] = useState();
+    let navigate = useNavigate();
 
     function onSubmit() {
-        const HOST = 'http://localhost:3005/'
+        const HOST = 'https://api.github.com/users/dylanngo95'
 
         fetch(HOST)
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                console.log('login', result);
                 dispatch({
                     type: 'LOGIN_SUCCESS',
                     data: {
-                        userName: result.userName,
-                        token: result.token
+                        userName: result.login,
+                        token: result.node_id
                     }
                 })
             })
@@ -42,6 +43,14 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
+    useEffect(() => {
+        if (auth.isLogin) {
+            localStorage.setItem('auth', JSON.stringify(auth));
+            let from = location.state?.from?.pathname || "/";
+            navigate(from, { replace: true });
+        }
+    },[auth])
+
     return (
         <div>
             <Form>
@@ -58,12 +67,11 @@ const Login = () => {
                     <Form.Control type="password" placeholder="Password" onChange={onChangePassword} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check type="checkbox" label="Remember" />
                 </Form.Group>
                 <Button variant="primary" type="button" onClick={onSubmit}>
-                    Submit
+                    Login
                 </Button>
-                {stateLogin.isLogin && <p><Form.Label>Login sucess</Form.Label></p>}
             </Form>
         </div>
     );

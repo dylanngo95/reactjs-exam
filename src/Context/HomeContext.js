@@ -1,17 +1,17 @@
 import React from 'react';
 
-export const CounterContext = React.createContext();
+export const HomeContext = React.createContext();
 
-export const initialCountState = 0;
+export const initialHomeState = 0;
 
-export const Reducer = (state, action) => {
+export const HomeReducer = (state, action) => {
     switch(action) {
         case 'increment':
             return state + 1;
         case 'decrement':
             return state - 1;
         case 'reset':
-            return initialCountState;
+            return initialHomeState;
         default:
             return state;
     }

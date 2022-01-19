@@ -1,6 +1,6 @@
-import Home from '../pages/home/Home';
-import Page404 from '../pages/page404/Page404';
-import Login from '../pages/login/Login';
+import Home from '../Pages/Home/Home';
+import Page404 from '../Pages/Page404/Page404';
+import Login from '../Pages/Login/Login';
 
 export const routes = [
     {
@@ -14,8 +14,8 @@ export const routes = [
         isPrivate: true,
     },
     {
-        path: '/404',
+        path: '/*',
         component: Page404,
-        isPrivate: true,
+        isPrivate: false,
     }
 ];

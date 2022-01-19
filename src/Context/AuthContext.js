@@ -1,14 +1,14 @@
 import React from 'react';
 
-export const LoginContext = React.createContext();
+export const AuthContext = React.createContext();
 
-export const initLoginState = {
+export const initAuthState = {
     isLogin: false,
     userName: null,
     token: null
 };
 
-export const LoginReducer = (state, action) => {
+export const AuthReducer = (state, action) => {
     console.log(action);
     switch (action.type) {
         case 'LOGIN_SUCCESS':

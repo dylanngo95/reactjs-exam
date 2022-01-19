@@ -1,34 +1,40 @@
 import React, { useReducer } from 'react';
-import { routes } from './config/routes';
+import { routes } from './Config/Routes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AppRouter from './components/AppRouter/AppRouter';
-
-import { CounterContext, Reducer, initialCountState } from './context/Reducer';
-import { LoginContext, LoginReducer, initLoginState } from './context/LoginConext';
+import AppRouter from './Components/AppRouter/AppRouter';
+import { HomeContext, HomeReducer, initialHomeState } from './Context/HomeContext';
+import { AuthContext, AuthReducer, initAuthState } from './Context/AuthContext';
 import './App.css';
 
 const App = () => {
-  let [stateCount, dispatchCount] = useReducer(Reducer, initialCountState);
-  let [stateLogin, dispatchLogin] = useReducer(LoginReducer, initLoginState);
+  let [stateCount, dispatchCount] = useReducer(HomeReducer, initialHomeState);
+  let [stateAuth, dispatchAuth] = useReducer(
+    AuthReducer,
+    initAuthState,
+    (initial) => JSON.parse(localStorage.getItem('auth')) || initial
+  );
 
   return (
-    <CounterContext.Provider
-      value={{ count: stateCount, dispatch: dispatchCount }}>
-      <LoginContext.Provider value={{ stateLogin: stateLogin, dispatch: dispatchLogin }}>
+    <AuthContext.Provider value={{ auth: stateAuth, dispatch: dispatchAuth }}>
+      <HomeContext.Provider value={{ count: stateCount, dispatch: dispatchCount }}>
         <BrowserRouter>
           <Routes>
-            {routes.map(route => {
-              return <Route
-              key={route.path}
-              path={route.path}
-              element={<route.component />}
-            />
+            {
+              routes.map(route => {
+                return <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<AppRouter
+                    component={route.component}
+                    isPrivate={route.isPrivate}
+                  />}
+                />
+              })
             }
-            )}
           </Routes>
         </BrowserRouter>
-      </LoginContext.Provider>
-    </CounterContext.Provider>
+      </HomeContext.Provider>
+    </AuthContext.Provider >
   );
 }
 
