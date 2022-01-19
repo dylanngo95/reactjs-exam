@@ -23,15 +23,6 @@ class Button extends React.Component {
                         error: false,
                         result: result
                     });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error: true
-                    });
                 }
             )
     }
@@ -43,7 +34,7 @@ class Button extends React.Component {
                     style={{ color: this.context.color }}
                     onClick={this.handleClick}
                 >
-                    Let's Crash Frontend
+                    Let is Crash Frontend
                 </button>
             );
         } else {

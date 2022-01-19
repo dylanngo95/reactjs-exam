@@ -1,3 +1,4 @@
+import React from 'react';
 import { Breadcrumb } from 'react-bootstrap';
 
 const BreadcrumbComponent = () => {
@@ -7,7 +8,7 @@ const BreadcrumbComponent = () => {
             <Breadcrumb.Item href="/about">
                 About
             </Breadcrumb.Item>
-            <Breadcrumb.Item active>Data</Breadcrumb.Item>
+            <Breadcrumb.Item href="/reducer">Reducer</Breadcrumb.Item>
         </Breadcrumb>
     );
 }

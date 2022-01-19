@@ -2,7 +2,7 @@ import React, { Component, useContext } from 'react';
 import { ThemeContext } from '../../ThemesContext';
 import './Header.css';
 
-const Email = (props) => {
+const Email = () => {
     return(
         <ThemeContext.Consumer>
             {value => <p>{value.color}</p>}
@@ -10,7 +10,7 @@ const Email = (props) => {
     );
 }
 
-const LogoComponent = (props) => {
+const LogoComponent = () => {
     let theme = useContext(ThemeContext);
 
     return (
