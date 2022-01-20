@@ -1,10 +1,8 @@
 const Footer = () => {
     return (
-        <div className='Footer'>
-            <>
-                Ⓒ Copyright by Dylan.
-            </>
-        </div>
+        <p className="text-center text-gray-500 text-xs">
+            &copy;2020 Dylan. All rights reserved.
+        </p>
     );
 }
 

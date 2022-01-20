@@ -36,7 +36,7 @@ const NavComponent = () => {
                     </div>
                     <div>
                         <a href="/about" className="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">Hello, {auth.userName}</a>
-                        <a onClick={onClickSignOut} href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-4 lg:mt-0">Logout</a>
+                        <a onClick={onClickSignOut} href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-5 lg:mt-0">Logout</a>
                     </div>
                 </div>
             </nav>
