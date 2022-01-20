@@ -41,7 +41,6 @@ const NavComponent = () => {
                 </div>
             </nav>
         </div>
-
     );
 }
 
