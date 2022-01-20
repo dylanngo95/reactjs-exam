@@ -1,5 +1,6 @@
 import React from 'react';
 
+/** Context */
 export const AuthContext = React.createContext();
 
 export const initAuthState = {
@@ -8,8 +9,8 @@ export const initAuthState = {
     token: null
 };
 
+/** Reducer */
 export const AuthReducer = (state, action) => {
-    console.log(action);
     switch (action.type) {
         case 'LOGIN_SUCCESS':
             return {
@@ -35,4 +36,32 @@ export const AuthReducer = (state, action) => {
         default:
             throw new Error();
     }
+}
+
+/** Action */
+export const LoginAction = (dispatch, name) => {
+
+    const HOST = 'https://api.github.com/users/dylanngo95'
+
+    fetch(HOST)
+        .then(res => res.json())
+        .then(result => {
+            console.log('login', result);
+            dispatch({
+                type: 'LOGIN_SUCCESS',
+                data: {
+                    userName: name,
+                    token: result.node_id
+                }
+            })
+
+        })
+        .catch(error => {
+            console.log('login error', error);
+            dispatch({
+                type: 'LOGIN_ERROR',
+                data: {
+                }
+            })
+        });
 }

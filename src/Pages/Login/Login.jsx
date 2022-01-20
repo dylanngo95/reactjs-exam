@@ -1,38 +1,35 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { AuthContext } from '../../Context/AuthContext';
+import { useState, useContext, useEffect } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { AuthContext, LoginAction } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
 
+    let navigate = useNavigate();
     let { auth, dispatch } = useContext(AuthContext);
+
     let [name, setName] = useState();
     let [password, setPassword] = useState();
-    let navigate = useNavigate();
+    let [alert, setAlert] = useState('Welcome to dylanops.com');
 
     function onSubmit() {
-        const HOST = 'https://api.github.com/users/dylanngo95'
+        const message = 'Please enter admin@gmail.com/admin to login.';
+        if (
+            name != 'admin@gmail.com'
+            && password != 'admin'
+        ) {
+            setAlert(message);
+            return;
+        }
 
-        fetch(HOST)
-            .then(res => res.json())
-            .then(result => {
-                console.log('login', result);
-                dispatch({
-                    type: 'LOGIN_SUCCESS',
-                    data: {
-                        userName: result.login,
-                        token: result.node_id
-                    }
-                })
-            })
-            .catch(error => {
-                dispatch({
-                    type: 'LOGIN_ERROR',
-                    data: {
-                    }
-                })
-            });
-
+        if (
+            name == 'admin@gmail.com'
+            && password == 'admin'
+        ) {
+            LoginAction(dispatch, name);
+            return;
+        }
     }
 
     function onChangeEmail(e) {
@@ -49,19 +46,21 @@ const Login = () => {
             let from = location.state?.from?.pathname || "/";
             navigate(from, { replace: true });
         }
-    },[auth])
+    }, [auth])
 
     return (
-        <div>
+        <div className='Login'>
+            {
+                !auth.isLogin && <Alert variant={'info'}>{alert}</Alert>
+            }
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" onChange={onChangeEmail} />
+                    <Form.Control type="email" placeholder="admin@gmail.com" onChange={onChangeEmail} />
                     <Form.Text className="text-muted">
                         Well never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" onChange={onChangePassword} />

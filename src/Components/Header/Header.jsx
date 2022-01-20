@@ -1,19 +1,27 @@
-import React, { Component, useContext } from 'react';
-import { Navbar, Container } from 'react-bootstrap';
+import { useContext } from 'react';
+import { Navbar, Container, Button } from 'react-bootstrap';
+import { AuthContext } from '../../Context/AuthContext';
 import './Header.css';
 
 const NavComponent = () => {
+    let {auth, dispatch} = useContext(AuthContext);
+
+    function onClickSignOut(_e) {
+        dispatch({type: 'LOGOUT'});
+        localStorage.setItem('auth', null);
+    }
+
     return (
-        <Navbar fluid>
-            <Container fluid>
-                <Navbar.Brand href="/">DylanOps</Navbar.Brand>
+        <Navbar className='Header'>
+            <Container>
+                <Navbar.Brand href="/">dylanops.com</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        Signed in as: <a href="/login">Mark Otto</a>
+                        Signed in as: <a href="/about">{auth.userName}</a>
                     </Navbar.Text>
-                    <Navbar.Text>
-                        Signed out: <a href="/logout">Signout</a>
+                    <Navbar.Text className='SignOut'>
+                        <Button  onClick={onClickSignOut} variant="light">Signout</Button>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
