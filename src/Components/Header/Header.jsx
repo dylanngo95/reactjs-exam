@@ -1,14 +1,26 @@
-import { useContext } from 'react';
+/* eslint-disable react/no-unknown-property */
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { CustomerContext } from '../../Context/CustomerContext';
 import './Header.css';
 
 const NavComponent = () => {
-    let { auth, dispatch } = useContext(AuthContext);
+    let { auth, dispatchAuth } = useContext(AuthContext);
+    let { customer, _dispatchCustomer } = useContext(CustomerContext);
+    let [ qty, setQty ] = useState(0);
 
     function onClickSignOut(_e) {
-        dispatch({ type: 'LOGOUT' });
+        dispatchAuth({ type: 'LOGOUT' });
         localStorage.setItem('auth', null);
     }
+
+    useEffect(() => {
+            let totalQty = 0;
+            customer.forEach(item => {
+                totalQty += item.qty;
+            });
+            setQty(totalQty);
+    });
 
     return (
         <div>
@@ -35,6 +47,7 @@ const NavComponent = () => {
                         </a>
                     </div>
                     <div>
+                        <p className="inline-block text-sm">{qty} items</p>
                         <a href="/about" className="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">Hello, {auth.userName}</a>
                         <a onClick={onClickSignOut} href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-5 lg:mt-0">Logout</a>
                     </div>

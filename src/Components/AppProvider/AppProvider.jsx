@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { AuthContext, AuthReducer, initAuthState } from "../../Context/AuthContext";
 import { HomeContext, initialHomeState } from "../../Context/HomeContext";
+import { CustomerContext, CustomerReducer, initCustomerState } from '../../Context/CustomerContext';
 
 const AppProvider = ({ children }) => {
 
@@ -10,11 +11,18 @@ const AppProvider = ({ children }) => {
         (initial) => JSON.parse(localStorage.getItem('auth')) || initial
     );
 
+    let [customer, dispatchCustomer] = useReducer(
+        CustomerReducer,
+        initCustomerState
+    );
+
     return (
         <AuthContext.Provider value={{ auth: stateAuth, dispatch: dispatchAuth }}>
-            <HomeContext.Provider value={{ customers: initialHomeState }}>
-                {children}
-            </HomeContext.Provider>
+            <CustomerContext.Provider value={{customer: customer, dispatch: dispatchCustomer}}>
+                <HomeContext.Provider value={{ products: initialHomeState }}>
+                    {children}
+                </HomeContext.Provider>
+            </CustomerContext.Provider>
         </AuthContext.Provider>
     );
 }
