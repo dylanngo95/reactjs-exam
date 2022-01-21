@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import { HomeContext } from '../../Context/HomeContext';
-import Customer from '../../Components/Customer/Customer';
+import Product from '../../Components/Product/Product';
 import './Home.css';
 
 const Home = () => {
@@ -11,15 +11,14 @@ const Home = () => {
         <>
             <Header />
             <div className='container p-5'>
-                <div className="grid gap-4 grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2 sm:grid-cols-1">
                     {
                         homeContext.customers.map(item =>
-                            <Customer
-                                post={item.post}
-                                image={item.image}
-                                name={item.name}
-                                companyName={item.companyName}
+                            <Product
                                 key={item.id}
+                                name={item.name}
+                                price={item.price}
+                                inStock={item.inStock}
                             />
                         )
                     }
