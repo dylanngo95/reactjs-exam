@@ -15,6 +15,8 @@ const NavComponent = () => {
     }
 
     useEffect(() => {
+            localStorage.setItem('customer', JSON.stringify(customer));
+
             let totalQty = 0;
             customer.forEach(item => {
                 totalQty += item.qty;

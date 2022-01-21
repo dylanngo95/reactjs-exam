@@ -3,7 +3,8 @@ import { CustomerContext } from '../../Context/CustomerContext';
 
 const Product = ({ id, name, price, inStock }) => {
     let { _customer, dispatchCustomer } = useContext(CustomerContext);
-    const addToBag = () => (productId) => () => {
+
+    const addToCart = () => (productId) => () => {
         dispatchCustomer({
             type: 'ADD_PRODUCT',
             qty: 1,
@@ -11,6 +12,16 @@ const Product = ({ id, name, price, inStock }) => {
             name: name
         });
     }
+
+    const removeFromCart = () => (productId) => () => {
+        dispatchCustomer({
+            type: 'REMOVE_PRODUCT',
+            qty: 1,
+            id: productId,
+            name: name
+        });
+    }
+
     return (
         <div className="flex p-6 font-mono">
             <div className="flex-none w-48 mb-10 relative z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-teal-400">
@@ -64,10 +75,10 @@ const Product = ({ id, name, price, inStock }) => {
                 </div>
                 <div className="flex space-x-2 mb-4 text-sm font-medium">
                     <div className="flex space-x-4">
-                        <button onClick={addToBag()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" type="button">
+                        <button onClick={addToCart()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" type="button">
                             Add to cart
                         </button>
-                        <button onClick={addToBag()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
+                        <button onClick={removeFromCart()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
                             Delete
                         </button>
 

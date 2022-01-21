@@ -16,7 +16,7 @@ const AppRouter = ({ component: Component, isPrivate }) => {
   }
 
   return (
-    <React.Suspense fallback={<>...</>}>
+    <React.Suspense fallback={<></>}>
       <Component />
     </React.Suspense>
   );

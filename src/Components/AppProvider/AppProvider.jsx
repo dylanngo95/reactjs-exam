@@ -13,7 +13,8 @@ const AppProvider = ({ children }) => {
 
     let [customer, dispatchCustomer] = useReducer(
         CustomerReducer,
-        initCustomerState
+        initCustomerState,
+        (initial) => JSON.parse(localStorage.getItem('customer')) || initial
     );
 
     return (
