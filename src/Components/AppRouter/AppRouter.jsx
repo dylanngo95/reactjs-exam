@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
 
@@ -16,7 +16,9 @@ const AppRouter = ({ component: Component, isPrivate }) => {
   }
 
   return (
-    <Component />
+    <React.Suspense fallback={<>...</>}>
+      <Component />
+    </React.Suspense>
   );
 }
 

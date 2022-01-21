@@ -6,7 +6,7 @@ import './Login.css';
 const Login = () => {
 
     let navigate = useNavigate();
-    let { auth, dispatch } = useContext(AuthContext);
+    let { auth, dispatchAuth } = useContext(AuthContext);
 
     let [name, setName] = useState();
     let [password, setPassword] = useState();
@@ -26,7 +26,7 @@ const Login = () => {
             name == 'admin@gmail.com'
             && password == 'admin'
         ) {
-            LoginAction(dispatch, name);
+            LoginAction(dispatchAuth, name);
             return;
         }
     }
@@ -45,7 +45,7 @@ const Login = () => {
             let from = location.state?.from?.pathname || "/";
             navigate(from, { replace: true });
         }
-    }, [auth])
+    }, [auth, navigate])
 
     return (
         <div className='flex justify-center'>

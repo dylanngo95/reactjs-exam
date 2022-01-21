@@ -1,12 +1,10 @@
 import { useContext } from 'react';
 import { CustomerContext } from '../../Context/CustomerContext';
 
-const Product = ({id, name, price, inStock}) => {
-    let { customer, dispatch } = useContext(CustomerContext);
-    console.log(customer);
-    console.log(dispatch);
+const Product = ({ id, name, price, inStock }) => {
+    let { _customer, dispatchCustomer } = useContext(CustomerContext);
     const addToBag = () => (productId) => () => {
-        dispatch({
+        dispatchCustomer({
             type: 'ADD_PRODUCT',
             qty: 1,
             id: productId,
@@ -33,7 +31,7 @@ const Product = ({id, name, price, inStock}) => {
                 <div className="flex items-baseline my-6">
                     <div className="space-x-3 flex text-sm font-medium">
                         <label>
-                            <input className="sr-only peer" name="size" type="radio" value="xs" />
+                            <input className="sr-only peer" name="size" type="radio" value="xs" defaultChecked />
                             <div className="relative w-10 h-10 flex items-center justify-center text-black peer-checked:bg-black peer-checked:text-white before:absolute before:z-[-1] before:top-0.5 before:left-0.5 before:w-full before:h-full peer-checked:before:bg-teal-400">
                                 XS
                             </div>
@@ -66,12 +64,13 @@ const Product = ({id, name, price, inStock}) => {
                 </div>
                 <div className="flex space-x-2 mb-4 text-sm font-medium">
                     <div className="flex space-x-4">
-                        <button className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" type="button">
-                            Buy now
+                        <button onClick={addToBag()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" type="button">
+                            Add to cart
                         </button>
-                        <button onClick={addToBag()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border border-slate-200 text-slate-900" type="button">
-                            Add to bag
+                        <button onClick={addToBag()(id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
+                            Delete
                         </button>
+
                     </div>
                     <button className="flex-none flex items-center justify-center w-12 h-12 text-black" type="button" aria-label="Like">
                         <svg width="20" height="20" fill="currentColor" aria-hidden="true">

@@ -17,8 +17,8 @@ const AppProvider = ({ children }) => {
     );
 
     return (
-        <AuthContext.Provider value={{ auth: stateAuth, dispatch: dispatchAuth }}>
-            <CustomerContext.Provider value={{customer: customer, dispatch: dispatchCustomer}}>
+        <AuthContext.Provider value={{ auth: stateAuth, dispatchAuth: dispatchAuth }}>
+            <CustomerContext.Provider value={{customer: customer, dispatchCustomer: dispatchCustomer}}>
                 <HomeContext.Provider value={{ products: initialHomeState }}>
                     {children}
                 </HomeContext.Provider>
