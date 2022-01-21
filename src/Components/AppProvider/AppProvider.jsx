@@ -1,10 +1,9 @@
 import { useReducer } from 'react';
 import { AuthContext, AuthReducer, initAuthState } from "../../Context/AuthContext";
-import { HomeContext, HomeReducer, initialHomeState } from "../../Context/HomeContext";
+import { HomeContext, initialHomeState } from "../../Context/HomeContext";
 
 const AppProvider = ({ children }) => {
 
-    let [stateCount, dispatchCount] = useReducer(HomeReducer, initialHomeState);
     let [stateAuth, dispatchAuth] = useReducer(
         AuthReducer,
         initAuthState,
@@ -13,7 +12,7 @@ const AppProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ auth: stateAuth, dispatch: dispatchAuth }}>
-            <HomeContext.Provider value={{ count: stateCount, dispatch: dispatchCount }}>
+            <HomeContext.Provider value={{ customers: initialHomeState }}>
                 {children}
             </HomeContext.Provider>
         </AuthContext.Provider>
