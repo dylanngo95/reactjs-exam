@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import Footer from '../../Components/Footer/Footer';
-import Header from '../../Components/Header/Header';
+import Nav from '../../Components/Nav/Nav';
 import { HomeContext } from '../../Context/HomeContext';
-import { ProductItem } from '../../Components/Product/Product';
+import { ProductItem } from '../../Components/Product/ProductItem';
 import './Home.css';
 
 const Home = () => {
     const homeContext = useContext(HomeContext);
     return (
         <>
-            <Header />
+            <Nav />
             <div className="bg-white">
                 <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 className="sr-only">Products</h2>
