@@ -4,38 +4,67 @@ export const HomeContext = React.createContext();
 
 export const initialHomeState = [
     {
-        id: 0,
-        image: 'post.jpg',
-        name: 'Sarah Dayan',
-        price: 50,
-        inStock: true
-    },
-    {
         id: 1,
-        image: 'post6.jpg',
-        name: 'Nuno Maduro',
-        price: 500,
-        inStock: true
+        name: 'Earthen Bottle',
+        href: '#',
+        price: '$48',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
         id: 2,
-        image: 'post2.jpg',
-        name: 'Guillermo Rauch',
-        price: 99,
-        inStock: true
+        name: 'Nomad Tumbler',
+        href: '#',
+        price: '$35',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+        imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
         id: 3,
-        image: 'post3.jpg',
-        name: 'Greg Sullivan',
-        price: 75,
-        inStock: true
+        name: 'Focus Paper Refill',
+        href: '#',
+        price: '$89',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+        imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
         id: 4,
-        image: 'post4.jpg',
-        name: 'Jake Ryan Smith',
-        price: 500,
-        inStock: true
-    }
-];
+        name: 'Machined Mechanical Pencil',
+        href: '#',
+        price: '$35',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+    {
+        id: 5,
+        name: ' Focus Card Tray',
+        href: '#',
+        price: '$45',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-05.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+    {
+        id: 6,
+        name: 'Focus Multi-Pack',
+        href: '#',
+        price: '$35',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-06.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+    {
+        id: 7,
+        name: 'Brass Scissors',
+        href: '#',
+        price: '$35',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-07.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+    {
+        id: 8,
+        name: 'Focus Carry Pouch',
+        href: '#',
+        price: '$35',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-08.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+]
