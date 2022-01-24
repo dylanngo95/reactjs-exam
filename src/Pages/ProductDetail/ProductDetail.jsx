@@ -18,7 +18,8 @@ const ProductDetail = () => {
             type: 'ADD_PRODUCT',
             qty: 1,
             id: productId,
-            name: name
+            name: product.name,
+            price: product.price
         });
     }
 

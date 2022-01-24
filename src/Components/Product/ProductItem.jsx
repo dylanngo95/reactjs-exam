@@ -3,13 +3,13 @@ import { CustomerContext } from '../../Context/CustomerContext';
 
 export function ProductItem({ product }) {
     let { _customer, dispatchCustomer } = useContext(CustomerContext);
-
     const addToCart = () => (productId) => () => {
         dispatchCustomer({
             type: 'ADD_PRODUCT',
             qty: 1,
             id: productId,
-            name: name
+            name: product.name,
+            price: product.price
         });
     }
 
@@ -18,7 +18,8 @@ export function ProductItem({ product }) {
             type: 'REMOVE_PRODUCT',
             qty: 1,
             id: productId,
-            name: name
+            name:  null,
+            price: null
         });
     }
 
@@ -38,11 +39,11 @@ export function ProductItem({ product }) {
             <div className="flex space-x-2 mt-2 mb-4 text-sm font-medium">
                 <div className="flex space-x-4">
                     <button onClick={addToCart()(product.id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
-                        Add
+                        Add to cart
                     </button>
-                    <button onClick={removeFromCart()(product.id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
+                    {/* <button onClick={removeFromCart()(product.id)} className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-slate-200 text-slate-900 sm:w-auto" type="button">
                         Delete
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

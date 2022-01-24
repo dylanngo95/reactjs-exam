@@ -8,6 +8,7 @@ const NavComponent = () => {
     let { auth, dispatchAuth } = useContext(AuthContext);
     let { customer, _dispatchCustomer } = useContext(CustomerContext);
     let [ qty, setQty ] = useState(0);
+    // console.log(customer);
 
     function onClickSignOut(_e) {
         dispatchAuth({ type: 'LOGOUT' });

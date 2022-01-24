@@ -24,7 +24,8 @@ export const CustomerReducer = (state, action) => {
                 newState.push({
                     id: action.id,
                     name: action.name,
-                    qty: action.qty
+                    qty: action.qty,
+                    price: action.price
                 });
             }
             return newState;
