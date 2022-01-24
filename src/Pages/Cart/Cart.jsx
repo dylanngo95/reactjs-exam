@@ -76,6 +76,7 @@ const Cart = () => {
             totalAmount += item.price * item.qty;
         });
         setTotalAmount(totalAmount);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, customer);
 
     
@@ -97,8 +98,8 @@ const Cart = () => {
                         <p className="text-sm text-coolGray-600">Not including taxes and shipping costs</p>
                     </div>
                     <div className="flex justify-end space-x-4">
-                        <a href="/" type="button" className="px-6 py-2 border rounded-md border-black-600">Back
-                            <span className="sr-only sm:not-sr-only">to shop</span>
+                        <a href="/" type="button" className="px-6 py-2 border rounded-md border-black-600 text-coolGray-50">Back
+                            <span className="sr-only sm:not-sr-only"> to shop</span>
                         </a>
                         <button type="button" className="px-6 py-2 border rounded-md text-white bg-red-500 text-coolGray-50">
                             <span className="sr-only sm:not-sr-only">Continue to</span> Checkout
