@@ -3,6 +3,7 @@ import Footer from "../../Components/Footer/Footer";
 import { useContext, useEffect, useState } from 'react';
 import { CustomerContext } from '../../Context/CustomerContext';
 import { HomeContext } from "../../Context/HomeContext";
+import { useNavigate } from 'react-router-dom';
 
 const CartItem = ({ cartItem }) => {
     let { products } = useContext(HomeContext);
@@ -69,6 +70,7 @@ const Cart = () => {
 
     let { customer, _dispatchCustomer } = useContext(CustomerContext);
     let [totalAmount, setTotalAmount] = useState(0);
+    let navigate = useNavigate();
 
     useEffect(() => {
         let totalAmount = 0;
@@ -79,7 +81,10 @@ const Cart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, customer);
 
-    
+    function onClickBack() {
+        navigate('/');
+    }
+ 
     return (
         <div>
             <Nav />
@@ -98,9 +103,9 @@ const Cart = () => {
                         <p className="text-sm text-coolGray-600">Not including taxes and shipping costs</p>
                     </div>
                     <div className="flex justify-end space-x-4">
-                        <a href="/" type="button" className="px-6 py-2 border rounded-md border-black-600 text-coolGray-50">Back to
-                            <span className="sr-only sm:not-sr-only"> shop</span>
-                        </a>
+                        <button onClick={onClickBack} type="button" className="px-6 py-2 border rounded-md border-black-600 text-coolGray-50">Back
+                            <span className="sr-only sm:not-sr-only"> to shop</span>
+                        </button>
                         <button type="button" className="px-6 py-2 border rounded-md text-white bg-red-500 text-coolGray-50">
                             <span className="sr-only sm:not-sr-only">Continue to</span> Checkout
                         </button>
