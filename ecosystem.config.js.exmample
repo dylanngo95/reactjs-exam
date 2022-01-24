@@ -7,8 +7,8 @@ module.exports = {
     apps : [
       {
         name      : 'dylanops',
-        script    : 'npx',
-        args      : 'serve -s build',
+        script    : 'serve',
+        args      : '-s build',
         env_production : {
           NODE_ENV: 'production'
         }
