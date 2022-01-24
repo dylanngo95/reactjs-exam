@@ -31,11 +31,36 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Build with nginx serve
 ```bash
-export PUBLIC_URL=https://example.com
+export PUBLIC_URL=https://dylanops.com
 npm run build
 ```
 ```
-\\ nginx config
+//default.conf
+
+server {
+    listen 80;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name dylanops.com;
+    ssl_certificate           /home/ubuntu/ssl/certificate.crt;
+    ssl_certificate_key       /home/ubuntu/ssl/private.key;
+
+    ssl on;
+    ssl_session_cache  builtin:1000  shared:SSL:10m;
+    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+    ssl_prefer_server_ciphers on;
+
+    root /home/ubuntu/reactjs-exam/build;
+    index index.html;
+
+    location / {
+    	 try_files $uri $uri/ /index.html;
+    }
+}
 
 ```
 ### `npm run eject`
